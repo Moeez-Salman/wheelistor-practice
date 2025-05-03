@@ -3,287 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wheelister - Profile</title>
+    <title>Wheelister | My Profile</title>
     <link rel="icon" href="logo-removebg-preview.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <style>
-        :root {
-            --primary: #0066FF;
-            --primary-dark: #0052cc;
-            --secondary: #00D5FF;
-            --dark: #051323;
-            --darker: #051a31;
-            --light: #f8f9fa;
-            --gray: #6c757d;
-        }
-
-        body {
-            background-color: var(--dark);
-            color: white;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            overflow-x: hidden;
-        }
-
-        .logo-container {
-            height: 50px;
-            width: 180px;
-            position: relative;
-        }
-
-        .logo-container img {
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-
-        .navbar {
-            background-color: rgba(5, 26, 49, 0.8) !important;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1rem 0;
-        }
-
-        .nav-link {
-            color: rgba(255, 255, 255, 0.8);
-            font-weight: 500;
-            padding: 0.5rem 1.2rem;
-            border-radius: 8px;
-            transition: all 0.3s;
-            margin: 0 0.2rem;
-        }
-
-        .nav-link:hover {
-            color: white;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-link.active {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
-        }
-
-        .page-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            margin: 2rem 0;
-        }
-
-        .profile-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            padding: 3rem;
-            margin-top: 2rem;
-            backdrop-filter: blur(5px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .profile-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0, 102, 255, 0.1), transparent 70%);
-            z-index: -1;
-        }
-
-        .profile-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 2rem;
-        }
-
-        .profile-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 2rem;
-            box-shadow: 0 10px 20px rgba(0, 102, 255, 0.3);
-        }
-
-        .profile-avatar i {
-            font-size: 3rem;
-            color: white;
-        }
-
-        .profile-username {
-            font-size: 2rem;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        .profile-role {
-            color: var(--secondary);
-            font-size: 1rem;
-            margin-top: 0.5rem;
-        }
-
-        .profile-info-item {
-            padding: 1.2rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-        }
-
-        .profile-info-item:last-child {
-            border-bottom: none;
-        }
-
-        .info-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1.5rem;
-        }
-
-        .info-icon i {
-            color: var(--secondary);
-            font-size: 1.2rem;
-        }
-
-        .info-label {
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.7);
-            width: 100px;
-        }
-
-        .info-value {
-            font-weight: 600;
-            color: white;
-            flex-grow: 1;
-        }
-
-        .profile-actions {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 2rem;
-            gap: 1rem;
-        }
-
-        .action-button {
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-        }
-
-        .btn-edit {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: none;
-        }
-
-        .btn-edit:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .btn-logout {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
-        }
-
-        .btn-logout:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
-        }
-
-        .loading-spinner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 3rem;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-left-color: var(--secondary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 1rem;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .error-message {
-            background: rgba(255, 59, 48, 0.1);
-            border-left: 4px solid rgba(255, 59, 48);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .profile-card {
-                padding: 1.5rem;
-            }
-            
-            .profile-header {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .profile-avatar {
-                margin-right: 0;
-                margin-bottom: 1.5rem;
-            }
-            
-            .profile-info-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .info-icon {
-                margin-right: 0;
-                margin-bottom: 0.5rem;
-            }
-            
-            .info-label {
-                width: 100%;
-                margin-bottom: 0.5rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="userdashboard.css">
+   <link rel="stylesheet" href="profile.css">
 </head>
 
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand logo-container" href="#">
+            <a class="navbar-brand" href="#">
                 <img src="logo-removebg-preview.png" alt="Wheelister Logo">
             </a>
             
@@ -291,8 +23,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="gotodashboard()">Home</a>
                     </li>
@@ -315,11 +47,14 @@
 
     <!-- Main Content -->
     <div class="container" style="margin-top: 100px;">
-        <h1 class="page-title">Your Profile</h1>
+        <div class="text-center mb-4 fade-in">
+            <h1 class="page-title">My Profile</h1>
+            <p class="text-muted">Manage your personal information and preferences</p>
+        </div>
         
         <div class="row justify-content-center">
-            <div class="col-md-10 col-lg-8">
-                <div class="profile-card">
+            <div class="col-lg-8">
+                <div class="profile-card slide-up">
                     <div id="userInfo">
                         <div class="loading-spinner">
                             <div class="spinner"></div>
@@ -328,11 +63,11 @@
                     </div>
                     
                     <div class="profile-actions">
-                        <button class="action-button btn-edit">
+                        <button class="action-button btn-edit" style="color: black;" >
                             <i class="fas fa-pen"></i>
                             Edit Profile
                         </button>
-                        <button class="action-button btn-logout">
+                        <button class="action-button btn-logout" onclick="logout()">
                             <i class="fas fa-sign-out-alt"></i>
                             Log Out
                         </button>
@@ -342,9 +77,91 @@
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="footer-logo">
+                        <img src="logo-removebg-preview.png" alt="Wheelister Logo">
+                    </div>
+                    <p>Your trusted partner for premium car rentals across Pakistan. Making your journeys comfortable and memorable since 2020.</p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 col-6 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Company</h5>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Our Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 col-6 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Support</h5>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Feedback</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 col-6 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Services</h5>
+                        <ul>
+                            <li><a href="#">Car Rental</a></li>
+                            <li><a href="#">Chauffeur</a></li>
+                            <li><a href="#">Airport Transfer</a></li>
+                            <li><a href="#">Corporate</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 col-6">
+                    <div class="footer-links">
+                        <h5>Legal</h5>
+                        <ul>
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Cookies</a></li>
+                            <li><a href="#">Licenses</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center copyright">
+                &copy; 2025 Wheelister. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
     <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('scrolled');
+            } else {
+                document.querySelector('.navbar').classList.remove('scrolled');
+            }
+        });
+        
+        // Navigation functions
         function gotodashboard() {
             window.location.href = "UserDashboard.html";
         }
@@ -356,11 +173,16 @@
         function gotome() {
             window.location.href = "about.html";
         }
+        
+        function logout() {
+            
+            window.location.href = "login.html";
+        }
 
         // Get username from local storage
         const username = localStorage.getItem("username");
 
-        // Format placeholders for display
+        // Format profile data for display
         function formatProfileData(user) {
             return `
                 <div class="profile-header">
@@ -405,6 +227,23 @@
                         <span class="info-label">Member Since</span>
                         <span class="info-value">March 2025</span>
                     </div>
+                    
+                    <div class="profile-info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="info-label">Membership</span>
+                        <span class="info-value">Premium (Valid until May 2026)</span>
+                    </div>
+                </div>
+                
+                <div class="mt-4 pt-3 border-top border-1 border-opacity-10">
+                    <h5 class="mb-3">Achievements</h5>
+                    <div>
+                        <span class="achievement-badge"><i class="fas fa-medal"></i> First Rental</span>
+                        <span class="achievement-badge"><i class="fas fa-award"></i> 5+ Rentals</span>
+                        <span class="achievement-badge"><i class="fas fa-trophy"></i> Loyal Customer</span>
+                    </div>
                 </div>
             `;
         }
@@ -441,6 +280,24 @@
                 document.getElementById("userInfo").innerHTML = showError("Error loading profile data. Please try again later.");
             });
         }
+        
+        // Animation Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        // Apply animations when DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Observe elements with animation classes
+            document.querySelectorAll('.profile-card, .page-title').forEach(el => {
+                observer.observe(el);
+            });
+        });
     </script>
 </body>
 </html>

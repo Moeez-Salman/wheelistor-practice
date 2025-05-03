@@ -7,316 +7,11 @@
     <link rel="icon" href="logo-removebg-preview.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #3498db;
-            --secondary: #2ecc71;
-            --dark: #2c3e50;
-            --light: #ecf0f1;
-            --accent: #e74c3c;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
-            color: var(--dark);
-            overflow-x: hidden;
-        }
-        
-        .navbar {
-            background-color: rgb(0, 0, 0);
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-        
-        .navbar.scrolled {
-            background-color: rgba(0, 0, 0, 0.95);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .navbar-brand img {
-            height: 50px;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-link {
-            color: white;
-            font-weight: 500;
-            margin: 0 10px;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--primary);
-        }
-        
-        .nav-link.active {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .car-details-section {
-            padding-top: 100px;
-            padding-bottom: 50px;
-        }
-        
-        .car-image-slider {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-        
-        .car-image-slider img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-        }
-        
-        .car-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .car-price {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-        }
-        
-        .specs-card {
-            background-color: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            margin-bottom: 30px;
-        }
-        
-        .specs-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .booking-card {
-            background-color: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 120px;
-        }
-        
-        .booking-btn {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-weight: 600;
-            border-radius: 50px;
-            width: 100%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 20px;
-        }
-        
-        .booking-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-        }
-        
-        .feature-icon {
-            background-color: rgba(52, 152, 219, 0.1);
-            color: var(--primary);
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-        
-        .specs-value {
-            font-size: 0.9rem;
-            color: var(--dark);
-            font-weight: 600;
-        }
-        
-        .specs-label {
-            font-size: 0.8rem;
-            color: #95a5a6;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .similar-cars {
-            padding: 50px 0;
-        }
-        
-        .similar-car-card {
-            background-color: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-        
-        .similar-car-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .similar-car-img {
-            height: 180px;
-            width: 100%;
-            object-fit: cover;
-        }
-        
-        .footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 4rem 0 2rem;
-            margin-top: 4rem;
-        }
-        
-        .footer-logo img {
-            height: 60px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-links h5 {
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        .footer-links ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: #bdc3c7;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary);
-            text-decoration: none;
-        }
-        
-        .social-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            margin-right: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 30px;
-            font-size: 14px;
-            color: #bdc3c7;
-        }
-        
-        /* Animation classes */
-        .fade-in {
-            animation: fadeIn 1s ease forwards;
-        }
-        
-        .slide-up {
-            animation: slideUp 0.8s ease forwards;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 992px) {
-            .car-title {
-                font-size: 2rem;
-            }
-            .car-image-slider img {
-                height: 300px;
-            }
-            .booking-card {
-                position: relative;
-                top: 0;
-                margin-top: 30px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .car-title {
-                font-size: 1.8rem;
-            }
-            .car-image-slider img {
-                height: 250px;
-            }
-            .car-details-section {
-                padding-top: 80px;
-            }
-        }
-
-        /* Loading spinner */
-        .loading-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 60vh;
-        }
-        
-        .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(52, 152, 219, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--primary);
-            animation: spin 1s ease-in-out infinite;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-    </style>
+    <link rel="stylesheet" href="cardetails.css">
 </head>
 <body>
+
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
@@ -348,6 +43,8 @@
         </div>
     </nav>
 
+
+
     <!-- Car Details Section -->
     <section class="car-details-section">
         <div class="container">
@@ -367,6 +64,8 @@
         </div>
     </section>
 
+
+    
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -475,186 +174,189 @@
         }
     
         // Load car details
-        async function loadCarDetails() {
-            const carName = getCarNameFromUrl(); // Get the car name from the URL
-            const detailsContainer = document.getElementById('carDetailsContainer');
-    
-            if (!carName) {
-                detailsContainer.innerHTML = '<div class="alert alert-danger">Car name not provided in the URL.</div>';
-                return;
-            }
-    
-            try {
-                const response = await fetch('http://localhost:3000/search', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username: carName }) // Use the carName from the URL
-                });
-    
-                if (!response.ok) {
-                    throw new Error('Failed to fetch car details');
-                }
-    
-                const result = await response.json();
-    
-                if (result.success && result.data && result.data.length > 0) {
-                    const car = result.data[0];
-    
-                    // Convert car_booking_price from string to number if needed
-                    const price = parseFloat(car.car_booking_price);
-    
-                    detailsContainer.innerHTML = `
-                        <div class="row">
-                            <div class="col-lg-8 fade-in">
-                                <div class="car-image-slider">
-                                    <img src="dashboard.jpeg" alt="${car.car_name}" class="img-fluid">
-                                </div>
-    
-                                <h1 class="car-title">${car.car_name}</h1>
-                                <div class="car-price">Rs. ${car.car_booking_price}/day</div>
-    
-                                <div class="mb-4">
-                                    <span class="badge bg-primary me-2">Available</span>
-                                    <span class="text-muted"><i class="fas fa-map-marker-alt me-1"></i> Lahore, Pakistan</span>
-                                </div>
-    
-                                <h4 class="mb-3">Car Specifications</h4>
-                                <div class="row g-3 mb-4">
-                                    <div class="col-md-3 col-6">
-                                        <div class="specs-card text-center">
-                                            <div class="feature-icon mx-auto">
-                                                <i class="fas fa-tachometer-alt"></i>
-                                            </div>
-                                            <div class="specs-value">${car.car_miles} miles</div>
-                                            <div class="specs-label">Mileage</div>
-                                        </div>
+      // Load car details
+async function loadCarDetails() {
+    const carName = getCarNameFromUrl(); // Get the car name from the URL
+    const detailsContainer = document.getElementById('carDetailsContainer');
+
+    if (!carName) {
+        detailsContainer.innerHTML = '<div class="alert alert-danger">Car name not provided in the URL.</div>';
+        return;
+    }
+
+    try {
+        const response = await fetch('http://localhost:3000/search', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: carName }) // Use the carName from the URL
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch car details');
+        }
+
+        const result = await response.json();
+
+        if (result.success && result.data && result.data.length > 0) {
+            const car = result.data[0];
+
+            // Convert car_booking_price from string to number if needed
+            const price = parseFloat(car.car_booking_price);
+
+            detailsContainer.innerHTML = `
+                <div class="row">
+                    <div class="col-lg-8 fade-in">
+                        <div class="car-image-slider">
+                            <img src="dashboard.jpeg" alt="${car.car_name}" class="img-fluid">
+                        </div>
+
+                        <h1 class="car-title">${car.car_name}</h1>
+                        <div class="car-price">Rs. ${car.car_booking_price}/day</div>
+
+                        <div class="mb-4">
+                            <span class="badge bg-primary me-2">Available</span>
+                            <span class="text-muted"><i class="fas fa-map-marker-alt me-1"></i> Lahore, Pakistan</span>
+                        </div>
+
+                        <h4 class="mb-3">Car Specifications</h4>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-3 col-6">
+                                <div class="specs-card text-center">
+                                    <div class="feature-icon mx-auto">
+                                        <i class="fas fa-tachometer-alt"></i>
                                     </div>
-                                    <div class="col-md-3 col-6">
-                                        <div class="specs-card text-center">
-                                            <div class="feature-icon mx-auto">
-                                                <i class="fas fa-gas-pump"></i>
-                                            </div>
-                                            <div class="specs-value">Petrol</div>
-                                            <div class="specs-label">Fuel Type</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-6">
-                                        <div class="specs-card text-center">
-                                            <div class="feature-icon mx-auto">
-                                                <i class="fas fa-cog"></i>
-                                            </div>
-                                            <div class="specs-value">Automatic</div>
-                                            <div class="specs-label">Transmission</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-6">
-                                        <div class="specs-card text-center">
-                                            <div class="feature-icon mx-auto">
-                                                <i class="fas fa-user-friends"></i>
-                                            </div>
-                                            <div class="specs-value">5 Seats</div>
-                                            <div class="specs-label">Capacity</div>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <h4 class="mb-3">Description</h4>
-                                <p>Experience luxury and performance with our ${car.car_name}. This premium vehicle offers exceptional comfort, advanced safety features, and a smooth driving experience. Perfect for both city travel and long journeys.</p>
-    
-                                <h4 class="mb-3">Features</h4>
-                                <div class="row mb-4">
-                                    <div class="col-md-6">
-                                        <ul class="list-unstyled">
-                                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Air Conditioning</li>
-                                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Power Steering</li>
-                                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Power Windows</li>
-                                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Anti-lock Braking System</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul class="list-unstyled">
-                                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Bluetooth Connectivity</li>
-                                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> USB Charging Ports</li>
-                                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> GPS Navigation</li>
-                                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Parking Sensors</li>
-                                        </ul>
-                                    </div>
+                                    <div class="specs-value">${car.car_miles} miles</div>
+                                    <div class="specs-label">Mileage</div>
                                 </div>
                             </div>
-    
-                            <div class="col-lg-4 fade-in" style="animation-delay: 0.3s;">
-                                <div class="booking-card">
-                                    <h4 class="mb-4">Book This Car</h4>
-    
-                                    <div class="mb-3">
-                                        <label for="pickupDate" class="form-label">Pickup Date</label>
-                                        <input type="date" class="form-control" id="pickupDate" min="${new Date().toISOString().split('T')[0]}">
+                            <div class="col-md-3 col-6">
+                                <div class="specs-card text-center">
+                                    <div class="feature-icon mx-auto">
+                                        <i class="fas fa-gas-pump"></i>
                                     </div>
-    
-                                    <div class="mb-3">
-                                        <label for="returnDate" class="form-label">Return Date</label>
-                                        <input type="date" class="form-control" id="returnDate" min="${new Date().toISOString().split('T')[0]}">
+                                    <div class="specs-value">Petrol</div>
+                                    <div class="specs-label">Fuel Type</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="specs-card text-center">
+                                    <div class="feature-icon mx-auto">
+                                        <i class="fas fa-cog"></i>
                                     </div>
-    
-                                    <div class="mb-3">
-                                        <label for="bookingTime" class="form-label">Rental Period</label>
-                                        <select class="form-select" id="bookingTime">
-                                            <option value="1hr">1 Hour - Rs. ${(price * 0.1).toFixed(0)}</option>
-                                            <option value="2hr">2 Hours - Rs. ${(price * 0.2).toFixed(0)}</option>
-                                            <option value="halfday">Half Day - Rs. ${(price * 0.5).toFixed(0)}</option>
-                                            <option value="fullday" selected>Full Day - Rs. ${price}</option>
-                                            <option value="week">1 Week - Rs. ${(price * 6).toFixed(0)}</option>
-                                        </select>
+                                    <div class="specs-value">Automatic</div>
+                                    <div class="specs-label">Transmission</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="specs-card text-center">
+                                    <div class="feature-icon mx-auto">
+                                        <i class="fas fa-user-friends"></i>
                                     </div>
-    
-                                    <div class="mb-4">
-                                        <label for="pickupLocation" class="form-label">Pickup Location</label>
-                                        <select class="form-select" id="pickupLocation">
-                                            <option value="lahore">Lahore Warehouse</option>
-                                            <option value="karachi">Karachi Warehouse</option>
-                                            <option value="islamabad">Islamabad Warehouse</option>
-                                        </select>
-                                    </div>
-    
-                                    <hr class="my-4">
-    
-                                    <div class="d-flex justify-content-between mb-2">
-                                        <span>Rental Price:</span>
-                                        <span>Rs. ${price}</span>
-                                    </div>
-                                    <div class="d-flex justify-content-between mb-2">
-                                        <span>Insurance:</span>
-                                        <span>Rs. ${(price * 0.15).toFixed(0)}</span>
-                                    </div>
-                                    <div class="d-flex justify-content-between mb-3">
-                                        <span>Service Fee:</span>
-                                        <span>Rs. ${(price * 0.05).toFixed(0)}</span>
-                                    </div>
-    
-                                    <div class="d-flex justify-content-between mb-4">
-                                        <span class="fw-bold">Total:</span>
-                                        <span class="fw-bold">Rs. ${(price * 1.2).toFixed(0)}</span>
-                                    </div>
-    
-                                    <button class="booking-btn" onclick="bookCar('${car.car_name}')">
-                                        Book Now <i class="fas fa-arrow-right ms-2"></i>
-                                    </button>
+                                    <div class="specs-value">5 Seats</div>
+                                    <div class="specs-label">Capacity</div>
                                 </div>
                             </div>
                         </div>
-                    `;
-    
-                    // Load similar cars (remains the same)
-                    loadSimilarCars();
-                } else {
-                    detailsContainer.innerHTML = '<div class="alert alert-warning">Car details not found.</div>';
-                }
-            } catch (error) {
-                console.error('Error fetching car details:', error);
-                detailsContainer.innerHTML = '<div class="alert alert-danger">Failed to load car details. Please try again later.</div>';
-            }
+
+                        <h4 class="mb-3">Description</h4>
+                        <p>Experience luxury and performance with our ${car.car_name}. This premium vehicle offers exceptional comfort, advanced safety features, and a smooth driving experience. Perfect for both city travel and long journeys.</p>
+
+                        <h4 class="mb-3">Features</h4>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Air Conditioning</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Power Steering</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Power Windows</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Anti-lock Braking System</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Bluetooth Connectivity</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> USB Charging Ports</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> GPS Navigation</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Parking Sensors</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 fade-in" style="animation-delay: 0.3s;">
+                        <div class="booking-card">
+                            <h4 class="mb-4">Book This Car</h4>
+
+                            <div class="mb-3">
+                                <label for="pickupDate" class="form-label">Pickup Date</label>
+                                <input type="date" class="form-control" id="pickupDate" min="${new Date().toISOString().split('T')[0]}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="returnDate" class="form-label">Return Date</label>
+                                <input type="date" class="form-control" id="returnDate" min="${new Date().toISOString().split('T')[0]}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="bookingTime" class="form-label">Rental Period</label>
+                                <select class="form-select" id="bookingTime">
+                                    <option value="1hr">1 Hour - Rs. ${(price * 0.1).toFixed(0)}</option>
+                                    <option value="2hr">2 Hours - Rs. ${(price * 0.2).toFixed(0)}</option>
+                                    <option value="halfday">Half Day - Rs. ${(price * 0.5).toFixed(0)}</option>
+                                    <option value="fullday" selected>Full Day - Rs. ${price}</option>
+                                    <option value="week">1 Week - Rs. ${(price * 6).toFixed(0)}</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="pickupLocation" class="form-label">Pickup Location</label>
+                                <select class="form-select" id="pickupLocation">
+                                    <option value="lahore">Lahore Warehouse</option>
+                                    <option value="karachi">Karachi Warehouse</option>
+                                    <option value="islamabad">Islamabad Warehouse</option>
+                                </select>
+                            </div>
+
+                            <hr class="my-4">
+
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Rental Price:</span>
+                                <span>Rs. ${price}</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Insurance:</span>
+                                <span>Rs. ${(price * 0.15).toFixed(0)}</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span>Service Fee:</span>
+                                <span>Rs. ${(price * 0.05).toFixed(0)}</span>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-4">
+                                <span class="fw-bold">Total:</span>
+                                <span class="fw-bold">Rs. ${(price * 1.2).toFixed(0)}</span>
+                            </div>
+
+                            <button class="booking-btn" onclick="bookCar('${car.car_name}')">
+                                Book Now <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Add event listener to update pricing when rental period changes
+            addPricingEventListener();
+            
+            // Load similar cars
+            loadSimilarCars();
+        } else {
+            detailsContainer.innerHTML = '<div class="alert alert-warning">Car details not found.</div>';
         }
-    
+    } catch (error) {
+        console.error('Error fetching car details:', error);
+        detailsContainer.innerHTML = '<div class="alert alert-danger">Failed to load car details. Please try again later.</div>';
+    }
+}
         // Book car function (remains the same)
   // Book car function (modified to include total_price)
 async function bookCar(carName) {
@@ -666,7 +368,7 @@ async function bookCar(carName) {
     // Get the total price from the booking card
     const totalPriceElement = document.querySelector('.booking-card .fw-bold:last-child');
     const total_price = totalPriceElement ? totalPriceElement.textContent.replace('Rs. ', '') : null;
-
+    const username = localStorage.getItem("username");
     if (!pickupDate || !returnDate) {
         alert('Please select pickup and return dates.');
         return;
@@ -678,6 +380,7 @@ async function bookCar(carName) {
     }
 
     try {
+        console.log(username);
         const response = await fetch('http://localhost:3000/book', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -687,7 +390,8 @@ async function bookCar(carName) {
                 return_date: returnDate,
                 rental_period: rentalPeriod,
                 pickup_location: pickupLocation,
-                total_price: total_price // Include the total_price in the request body
+                total_price: total_price, // Include the total_price in the request body
+                username: username
             })
         });
 
@@ -755,6 +459,108 @@ async function bookCar(carName) {
                 });
             }, 500);
         });
+
+// Add this function after loadCarDetails() in your script
+
+// Update pricing based on selected rental period
+function updatePricing() {
+    const selectedPeriod = document.getElementById('bookingTime').value;
+    const basePrice = parseFloat(document.querySelector('.car-price').textContent.replace('Rs. ', '').replace('/day', ''));
+    
+    let rentalPrice;
+    
+    // Calculate rental price based on selected period
+    switch(selectedPeriod) {
+        case '1hr':
+            rentalPrice = basePrice * 0.1;
+            break;
+        case '2hr':
+            rentalPrice = basePrice * 0.2;
+            break;
+        case 'halfday':
+            rentalPrice = basePrice * 0.5;
+            break;
+        case 'fullday':
+            rentalPrice = basePrice;
+            break;
+        case 'week':
+            rentalPrice = basePrice * 6;
+            break;
+        default:
+            rentalPrice = basePrice;
+    }
+    
+    // Round to whole numbers
+    rentalPrice = Math.round(rentalPrice);
+    const insurance = Math.round(rentalPrice * 0.15);
+    const serviceFee = Math.round(rentalPrice * 0.05);
+    const total = rentalPrice + insurance + serviceFee;
+    
+    // Update prices in the booking card
+    const priceElements = document.querySelectorAll('.booking-card .d-flex span:last-child');
+    priceElements[0].textContent = `Rs. ${rentalPrice}`;
+    priceElements[1].textContent = `Rs. ${insurance}`;
+    priceElements[2].textContent = `Rs. ${serviceFee}`;
+    priceElements[3].textContent = `Rs. ${total}`;
+    
+    // Update dropdown options with correct prices
+    updateRentalPeriodOptions(basePrice);
+}
+
+// Update the rental period dropdown options with calculated prices
+function updateRentalPeriodOptions(basePrice) {
+    const bookingTimeSelect = document.getElementById('bookingTime');
+    const options = bookingTimeSelect.options;
+    
+    options[0].textContent = `1 Hour - Rs. ${Math.round(basePrice * 0.1)}`;
+    options[1].textContent = `2 Hours - Rs. ${Math.round(basePrice * 0.2)}`;
+    options[2].textContent = `Half Day - Rs. ${Math.round(basePrice * 0.5)}`;
+    options[3].textContent = `Full Day - Rs. ${basePrice}`;
+    options[4].textContent = `1 Week - Rs. ${Math.round(basePrice * 6)}`;
+}
+
+// Then update the loadCarDetails function to include an event listener for the select dropdown
+// Add this inside the if(result.success) block after creating the HTML:
+
+function addPricingEventListener() {
+    const bookingTimeSelect = document.getElementById('bookingTime');
+    if (bookingTimeSelect) {
+        bookingTimeSelect.addEventListener('change', updatePricing);
+    }
+}
+
+// Call this function at the end of your loadCarDetails function
+// Also update the document ready function to call updatePricing initially:
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadCarDetails();
+    
+    // Wait a bit for the car details to load before trying to update pricing
+    setTimeout(() => {
+        updatePricing();
+    }, 1500);
+    
+    // Intersection Observer for animations (remains the same)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    // Observe elements with animation classes (remains the same)
+    setTimeout(() => {
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    }, 500);
+});
+
+
+
+
     </script>
 </body>
 </html>

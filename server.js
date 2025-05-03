@@ -221,47 +221,89 @@ app.post("/updateuser", async (req, res) => {
 app.post("/book", async (req, res) => {
     console.log("Working");
 
-    const { car_name, pickup_date, return_date, rental_period, pickup_location, total_price } = req.body;
-
-    if (!car_name || !pickup_date || !return_date || !pickup_location || !rental_period || !total_price) {
-        return res.status(400).json({ success: false, message: "All fields are required, including total price." });
+    const {
+        car_name,
+        pickup_date,
+        return_date,
+        rental_period,
+        pickup_location,
+        total_price,
+        username // Make sure this comes from frontend
+    } = req.body;
+console.log(username);
+    if (!car_name || !pickup_date || !return_date || !pickup_location || !rental_period || !total_price || !username) {
+        return res.status(400).json({ success: false, message: "All fields are required, including username and total price." });
     }
 
     try {
         const pool = await sql.connect(dbConfig);
-
-        const result = await pool
+        
+        // Step 1: Get userID from users table using username
+        const userResult = await pool
             .request()
+            .input("Username", sql.NVarChar, username)
+            .query("SELECT userID FROM users WHERE username = @Username");
+
+        if (userResult.recordset.length === 0) {
+            return res.status(404).json({ success: false, message: "User not found." });
+        }
+
+        const userID = userResult.recordset[0].userID;
+        console.log('User ID:', userID);
+        // Step 2: Insert booking with userID
+        const bookingResult = await pool
+            .request()
+            .input("UserID", sql.Int, userID)
             .input("CarName", sql.NVarChar, car_name)
-            .input("PickupDate", sql.DateTime, pickup_date)
-            .input("ReturnDate", sql.DateTime, return_date)
+            .input("PickupDate", sql.Date, pickup_date)
+            .input("ReturnDate", sql.Date, return_date)
             .input("RentalPeriod", sql.NVarChar, rental_period)
             .input("PickupLocation", sql.NVarChar, pickup_location)
-            .input("TotalPrice", sql.NVarChar, total_price) // Assuming total_price in DB is NVarChar
+            .input("TotalPrice", sql.NVarChar, total_price)
             .query(`
-                INSERT INTO car_bookings (car_name, pickup_date, return_date, rental_period, pickup_location, booking_date, total_price)
-                VALUES (@CarName, @PickupDate, @ReturnDate, @RentalPeriod, @PickupLocation, GETDATE(), @TotalPrice);
+                INSERT INTO car_bookings (userID, car_name, pickup_date, return_date, rental_period, pickup_location, booking_date, total_price)
+                VALUES (@UserID, @CarName, @PickupDate, @ReturnDate, @RentalPeriod, @PickupLocation, GETDATE(), @TotalPrice);
                 SELECT SCOPE_IDENTITY() AS BookingID;
             `);
 
-        const bookingId = result.recordset[0].BookingID;
+        const bookingId = bookingResult.recordset[0].BookingID;
 
         res.status(201).json({
             success: true,
             message: `Booking for ${car_name} has been successfully created.`,
             booking_id: bookingId,
+            user_id: userID,
             car_name,
             pickup_date,
             return_date,
-            total_price // Send the stored price back in the response
+            total_price,
+            userID
+
         });
+
     } catch (error) {
         console.error("Error booking the car:", error);
         res.status(500).json({ success: false, message: "Internal server error." });
     }
 });
 
+app.get("/bookings", async (req, res) => {
+    try {
+        const pool = await sql.connect(dbConfig);
+        const result = await pool
+            .request()
+            .query("SELECT * from car_bookings");
 
+        if (result.recordset.length > 0) {
+            res.json({ success: true, data: result.recordset });
+        } else {
+            res.json({ success: false, message: "No bookings found." });
+        }
+    } catch (error) {
+        console.error("Error fetching bookings:", error);
+        res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+});
 
 
 

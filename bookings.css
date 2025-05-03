@@ -1,0 +1,113 @@
+/* Additional styles for bookings page */
+.booking-section {
+    padding-top: 100px;
+    min-height: calc(100vh - 300px);
+}
+
+.table-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+    color: #495057;
+}
+
+.booking-header {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.booking-header h2 {
+    color: #333;
+    font-weight: 700;
+}
+
+.booking-header p {
+    color: #6c757d;
+    max-width: 600px;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.status-active {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-completed {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.status-cancelled {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.no-bookings {
+    text-align: center;
+    padding: 60px 0;
+    color: #6c757d;
+}
+
+.no-bookings i {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #dee2e6;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.action-btn {
+    padding: 5px 12px;
+    font-size: 0.85rem;
+    border-radius: 4px;
+}
+
+/* Animation for page elements */
+.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.slide-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
