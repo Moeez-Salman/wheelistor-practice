@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheelister | Premium Car Rental</title>
+    <link rel="icon" href="logo-removebg-preview.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --accent: #e74c3c;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('dashboard.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        
+        .navbar {
+            background-color: rgb(0, 0, 0);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar.scrolled {
+            background-color: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link {
+            color: white;
+            font-weight: 500;
+            margin: 0 10px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--primary);
+        }
+        
+        .nav-link.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero-heading {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-description {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+        
+        .search-section {
+            background-color: white;
+            padding: 4rem 0;
+            border-radius: 15px;
+            margin-top: -100px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        
+        .search-tab {
+            padding: 15px 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            margin: 0 10px;
+            background-color: #f8f9fa;
+        }
+        
+        .search-tab.active {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .search-tab:hover:not(.active) {
+            background-color: #e9ecef;
+            transform: translateY(-3px);
+        }
+        
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .search-box {
+            display: flex;
+            background-color: #f8f9fa;
+            border-radius: 50px;
+            overflow: hidden;
+            padding: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .search-input {
+            flex-grow: 1;
+            border: none;
+            padding: 15px 25px;
+            font-size: 16px;
+            background-color: transparent;
+            outline: none;
+        }
+        
+        .search-button {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .search-results {
+            margin-top: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .result-item {
+            background-color: white;
+            border-left: 4px solid var(--primary);
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .result-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result-content {
+            padding: 20px;
+        }
+        
+        .view-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .view-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h5 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 30px;
+            font-size: 14px;
+            color: #bdc3c7;
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .hero-heading {
+                font-size: 3rem;
+            }
+            .search-section {
+                margin-top: -50px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-heading {
+                font-size: 2.5rem;
+            }
+            .hero-description {
+                font-size: 1rem;
+            }
+            .search-tab {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            .search-section {
+                margin-top: 0;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo-removebg-preview.png" alt="Wheelister Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" onclick="gotodashboard()">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="gotobookings()">My Bookings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="gotoprofile()">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="gotome()">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Settings</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1 class="hero-heading">WHEELISTER</h1>
+                <p class="hero-description">
+                    Select your favorite cars to rent from all over Pakistan within minutes. We offer an extensive selection that will make your travel journey memorable and exciting.
+                </p>
+                <a href="#search-section" class="btn search-button">
+                    Start Your Journey <i class="fas fa-chevron-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section" id="search-section">
+        <div class="container">
+            <div class="search-tabs slide-up">
+                <div class="search-tab active" id="carTab" onclick="showcarsearch()">
+                    <i class="fas fa-car me-2"></i> Find Cars
+                </div>
+                <div class="search-tab" id="warehouseTab" onclick="showWarehouseSearch()">
+                    <i class="fas fa-warehouse me-2"></i> Warehouses
+                </div>
+            </div>
+
+            <div class="search-container slide-up" style="animation-delay: 0.2s;">
+                <!-- Car Search Section -->
+                <div id="carSearchSection">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" class="search-input" placeholder="What car are you looking for?">
+                        <button class="search-button" id="searchButton">
+                            <i class="fas fa-search me-2"></i> Search
+                        </button>
+                    </div>
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+
+                <!-- Warehouse Search Section -->
+                <div id="warehouseSearchSection" style="display: none;">
+                    <div class="search-box">
+                        <input type="text" id="warehouseInput" class="search-input" placeholder="Enter city or location">
+                        <button class="search-button" id="warehouseButton">
+                            <i class="fas fa-map-marker-alt me-2"></i> Find Warehouse
+                        </button>
+                    </div>
+                    <div id="warehouseResults" class="search-results"></div>
+                </div>
+
+                <!-- Cars Search Section -->
+                <div id="carsSearchSection" style="display: none;">
+                    <div class="search-box">
+                        <input type="text" id="caringInput" class="search-input" placeholder="Search by car model, brand or type">
+                        <button class="search-button" id="caringButton">
+                            <i class="fas fa-car-alt me-2"></i> Find Models
+                        </button>
+                    </div>
+                    <div id="carsResults" class="search-results"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Cars Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Featured Vehicles</h2>
+                <p class="text-muted">Discover our most popular rental options</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="toyota corolla.jpeg" style="height: 200px;"  class="card-img-top" alt="Car Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Toyota Corolla</h5>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="badge bg-primary">Sedan</span>
+                                <span class="text-success fw-bold">Rs. 5,000/day</span>
+                            </div>
+                            <div class="d-flex justify-content-between text-muted small mb-3">
+                                <span><i class="fas fa-gas-pump me-1"></i> Hybrid</span>
+                                <span><i class="fas fa-cog me-1"></i> Automatic</span>
+                                <span><i class="fas fa-user me-1"></i> 5 Seats</span>
+                            </div>
+                            <button class="btn search-button w-100">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="Free-download-Honda-Wallpaper.jpg" style="height: 200px;" class="card-img-top" alt="Car Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Honda Civic</h5>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="badge bg-primary">Sedan</span>
+                                <span class="text-success fw-bold">Rs. 5,500/day</span>
+                            </div>
+                            <div class="d-flex justify-content-between text-muted small mb-3">
+                                <span><i class="fas fa-gas-pump me-1"></i> Petrol</span>
+                                <span><i class="fas fa-cog me-1"></i> Automatic</span>
+                                <span><i class="fas fa-user me-1"></i> 5 Seats</span>
+                            </div>
+                            <button class="btn search-button w-100">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="Suzuki Cultus 2022 wallpaper-2475.jpg" style="height: 200px;" class="card-img-top" alt="Car Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Suzuki Cultus</h5>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="badge bg-primary">Hatchback</span>
+                                <span class="text-success fw-bold">Rs. 4,000/day</span>
+                            </div>
+                            <div class="d-flex justify-content-between text-muted small mb-3">
+                                <span><i class="fas fa-gas-pump me-1"></i> Petrol</span>
+                                <span><i class="fas fa-cog me-1"></i> Manual</span>
+                                <span><i class="fas fa-user me-1"></i> 4 Seats</span>
+                            </div>
+                            <button class="btn search-button w-100">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">How It Works</h2>
+                <p class="text-muted">Rent your dream car in 3 simple steps</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4 text-center">
+                    <div class="p-4">
+                        <div class="bg-white rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                            <i class="fas fa-search fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="fw-bold">Search</h5>
+                        <p class="text-muted">Browse our extensive fleet and find your perfect car</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 text-center">
+                    <div class="p-4">
+                        <div class="bg-white rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                            <i class="fas fa-calendar-check fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="fw-bold">Book</h5>
+                        <p class="text-muted">Select your dates and book your vehicle online in minutes</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 text-center">
+                    <div class="p-4">
+                        <div class="bg-white rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                            <i class="fas fa-car fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="fw-bold">Drive</h5>
+                        <p class="text-muted">Pick up your car and enjoy your journey</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="footer-logo">
+                        <img src="logo-removebg-preview.png" alt="Wheelister Logo">
+                    </div>
+                    <p>Your trusted partner for premium car rentals across Pakistan. Making your journeys comfortable and memorable since 2020.</p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 col-6 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Company</h5>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Our Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 col-6 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Support</h5>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Feedback</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 col-6 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Services</h5>
+                        <ul>
+                            <li><a href="#">Car Rental</a></li>
+                            <li><a href="#">Chauffeur</a></li>
+                            <li><a href="#">Airport Transfer</a></li>
+                            <li><a href="#">Corporate</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 col-6">
+                    <div class="footer-links">
+                        <h5>Legal</h5>
+                        <ul>
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Cookies</a></li>
+                            <li><a href="#">Licenses</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center copyright">
+                &copy; 2025 Wheelister. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('scrolled');
+            } else {
+                document.querySelector('.navbar').classList.remove('scrolled');
+            }
+        });
+        
+        // Tab switching
+        function showcarsearch() {
+            document.getElementById('carSearchSection').style.display = 'block';
+            document.getElementById('warehouseSearchSection').style.display = 'none';
+            document.getElementById('carsSearchSection').style.display = 'none';
+            
+            document.getElementById('carTab').classList.add('active');
+            document.getElementById('warehouseTab').classList.remove('active');
+            document.getElementById('carModelsTab').classList.remove('active');
+        }
+        
+        function showWarehouseSearch() {
+            document.getElementById('carSearchSection').style.display = 'none';
+            document.getElementById('warehouseSearchSection').style.display = 'block';
+            document.getElementById('carsSearchSection').style.display = 'none';
+            
+            document.getElementById('carTab').classList.remove('active');
+            document.getElementById('warehouseTab').classList.add('active');
+            document.getElementById('carModelsTab').classList.remove('active');
+        }
+        
+        function showCarsSearch() {
+            document.getElementById('carSearchSection').style.display = 'none';
+            document.getElementById('warehouseSearchSection').style.display = 'none';
+            document.getElementById('carsSearchSection').style.display = 'block';
+            
+            document.getElementById('carTab').classList.remove('active');
+            document.getElementById('warehouseTab').classList.remove('active');
+            document.getElementById('carModelsTab').classList.add('active');
+        }
+        
+        // Navigation functions
+        function gotodashboard() {
+            setTimeout(() => window.location.href = "UserDashboard.html", 1000);
+        }
+        
+        function gotobookings() {
+            setTimeout(() => window.location.href = "bookings.html", 1000);
+        }
+        
+        function gotoprofile() {
+            setTimeout(() => window.location.href = "profile.html", 1000);
+        }
+        
+        function gotome() {
+            setTimeout(() => window.location.href = "about.html", 1000);
+        }
+        
+        // Search functionality
+        document.getElementById('searchButton').addEventListener('click', async () => {
+    const searchTerm = document.getElementById('searchInput').value.trim();
+    const resultsContainer = document.getElementById('searchResults');
+    resultsContainer.innerHTML = '';
+    
+    if (!searchTerm) return;
+    
+    // Show loading state
+    resultsContainer.innerHTML = '<div class="text-center py-4"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>';
+    
+    try {
+        const response = await fetch('http://localhost:3000/search', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: searchTerm })
+        });
+        const result = await response.json();
+        
+        if (result.success && result.data.length > 0) {
+            resultsContainer.innerHTML = result.data.map(car => `
+                <div class="result-item mb-3 p-3 border rounded shadow-sm">
+                    <div class="result-content d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-1">${car.car_name}</h5>
+                            <p class="text-muted mb-0">Miles: ${car.car_miles} | Price: $${car.car_booking_price}</p>
+                        </div>
+                        <button onclick="viewCarDetails('${car.car_name}')" class="btn btn-primary">
+                            View Details <i class="fas fa-arrow-right ms-1"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        } else {
+            resultsContainer.innerHTML = '<div class="text-center py-4 text-muted">No results found</div>';
+        }
+    } catch (error) {
+        console.error('Search Error:', error);
+        resultsContainer.innerHTML = '<div class="text-center py-4 text-danger">Something went wrong. Please try again later.</div>';
+    }
+});
+
+// Define the function to handle "View Details" button click
+function viewCarDetails(carName) {
+    window.location.href = `car-details.html?car_name=${encodeURIComponent(carName)}`;
+}
+
+
+
+        document.getElementById('warehouseButton').addEventListener('click', async () => {
+            const location = document.getElementById('warehouseInput').value.trim();
+            const resultsContainer = document.getElementById('warehouseResults');
+            resultsContainer.innerHTML = '';
+            
+            if (!location) return;
+            
+            // Show loading state
+            resultsContainer.innerHTML = '<div class="text-center py-4"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>';
+            
+            try {
+                const response = await fetch('http://localhost:3000/search-warehouse', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ location })
+                });
+                const result = await response.json();
+                
+                if (result.success && result.data.length > 0) {
+                    resultsContainer.innerHTML = result.data.map(warehouse => `
+                        <div class="result-item">
+                            <div class="result-content d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="mb-1">${warehouse.warehouse_name}</h5>
+                                    <p class="text-muted mb-0">${warehouse.address}</p>
+                                    <small class="text-muted"><i class="fas fa-phone me-1"></i>${warehouse.phonenumber}</small>
+                                </div>
+                                <button onclick="viewWarehouse('${warehouse.warehouse_no}')" class="view-button">
+                                    Details <i class="fas fa-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    resultsContainer.innerHTML = '<div class="text-center py-4 text-muted">No warehouses found in this location</div>';
+                }
+            } catch (error) {
+                console.error('Warehouse Search Error:', error);
+                resultsContainer.innerHTML = '<div class="text-center py-4 text-danger">Something went wrong. Please try again later.</div>';
+            }
+        });
+        
+        document.getElementById('caringButton').addEventListener('click', async () => {
+    const carModel = document.getElementById('caringInput').value.trim();
+    const resultsContainer = document.getElementById('carsResults');
+    resultsContainer.innerHTML = '';
+    
+    if (!carModel) return;
+    
+    // Show loading state
+    resultsContainer.innerHTML = '<div class="text-center py-4"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>';
+    
+    try {
+        const response = await fetch('http://localhost:3000/search-cars', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ model: carModel })
+        });
+        const result = await response.json();
+        
+        if (result.success && result.data.length > 0) {
+            resultsContainer.innerHTML = result.data.map(car => `
+                <div class="result-item">
+                    <div class="result-content d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-1">${car.brand} ${car.model}</h5>
+                            <p class="text-muted mb-0">${car.type} • ${car.year} • ${car.transmission}</p>
+                            <div class="mt-1">
+                                <span class="badge bg-success me-2">Rs. ${car.price}/day</span>
+                                <small class="text-muted"><i class="fas fa-map-marker-alt me-1"></i>${car.location}</small>
+                            </div>
+                        </div>
+                        <button onclick="viewCarDetails('${car.car_name}')" class="btn btn-primary">View Details</button>
+
+                    </div>
+                </div>
+            `).join('');
+        } else {
+            resultsContainer.innerHTML = '<div class="text-center py-4 text-muted">No car models found matching your search</div>';
+        }
+    } catch (error) {
+        console.error('Car Search Error:', error);
+        resultsContainer.innerHTML = '<div class="text-center py-4 text-danger">Something went wrong. Please try again later.</div>';
+    }
+});
+
+// Function to view car details
+function viewCarDetails(carName) {
+    window.location.href = `car-details.html?car_name=${encodeURIComponent(carName)}`;
+}
+
+
+// Function to view warehouse details
+function viewWarehouse(warehouseNo) {
+    // Navigate to warehouse details page
+    window.location.href = `warehouse-details.html?id=${warehouseNo}`;
+}
+
+// Function to view user profile
+function viewUser(userId) {
+    // Navigate to user profile page
+    window.location.href = `user-profile.html?id=${userId}`;
+}
+
+// Add smooth scrolling for all anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Intersection Observer for animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.2 });
+
+// Observe elements with animation classes
+document.querySelectorAll('.card, .p-4').forEach(el => {
+    observer.observe(el);
+});
+</script>
+</body>
+</html>

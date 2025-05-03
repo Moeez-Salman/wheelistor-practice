@@ -1,0 +1,196 @@
+img {
+    animation: fadeIn 1s ease-out;
+  }
+
+#background-container {
+    background-image: url('image.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.transparent-container {
+    background-color: rgba(16, 16, 16, 0.581); 
+    border-radius: 60px;
+    border: 2px solid rgb(69, 69, 69); 
+    padding: 30px; 
+    height: auto; 
+    max-width: 650px; 
+    margin: 0 auto; /* Center container horizontally */
+}
+
+
+.container-fluid {
+    position: absolute;
+    top: 130px;
+    left: 80%;
+    transform: translateX(-50%); /* Center container horizontally */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  html, body {
+    height: 100%; 
+    margin: 0; 
+    padding: 0; 
+    overflow-x: hidden; /* Hide any overflow on the x-axis */
+  }
+  
+  /* Full background styling */
+  body {
+    display: flex;
+    justify-content: flex-end;
+    color: #000000;
+    background: url('image.png');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    position: relative;
+    top: 0px;
+    width: 100vw; 
+    height: 100vh; 
+  }
+  
+  /* Overlay to darken the background image */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent overlay */
+    z-index: 1; 
+  }
+  /* Login container holding the form */
+  .login-container {
+    background: #0c0c0c;
+    height: 100vh;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;  
+  }
+  /* Centered login box */
+  .login-box {
+    padding: 40px;
+    color: white;
+    width: 500px;
+    text-align: center;
+    z-index: 2;  /* Ensure the login box is on top of the overlay */
+    position: relative; 
+}
+  .login-box h2 {
+    margin-bottom: 30px;
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+  }
+  .input-box {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 15px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    color: white;
+    z-index: 3; /* Ensure the input fields are on top */
+    position: relative; 
+}
+  .input-box::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .input-box:focus {
+    border-color: #3b5998;
+    outline: none;
+}
+  /* Styling the login button */
+  .btn {
+    width: 100%;
+    padding: 12px;
+    background: #3b5998;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  .btn:hover {
+    background: #2e4778;
+  }
+  .forgot {
+    display: block;
+    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .forgot:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  .wheellister-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px; 
+    font-size: 34px;
+    font-weight: bold;
+    color: rgba(155, 154, 154, 0.67);
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    z-index: 3;
+  }
+  .shake {
+    animation: shake 0.5s;
+  }
+  
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .login-container {
+      width: 100%;
+    }
+    body {
+      justify-content: center;
+    }
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(10);
+    }
+  }
+
+  p {
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 25px;
+    animation: fadeIn 2s ease-out; /* Apply fade-in effect */
+  }
+  

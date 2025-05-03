@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  /* Background styling*/
+  body {
+    display: flex;
+    justify-content: flex-end;
+    color: #051323;
+    background-color: #051323;
+    background-size: 1550px;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 0px;
+  }
+  /* Overlay to darken the background image */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+  /* Login container holding the form */
+  .login-container {
+    height: 100vh;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;  
+  }
+  /* Centered login box */
+  .login-box {
+    position: relative;
+    right: 750px;
+    padding: 40px;
+    color: white;
+    width: 100%;
+    text-align: center;
+  }
+  .login-box h2 {
+    margin-bottom: 30px;
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+  }
+  .input-box {
+    position: relative;
+    width: 100%;
+    padding: 12px 15px;
+    margin: 15px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    color: white;
+  }
+  .input-box::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .input-box:focus {
+    border-color: #3b5998;
+    outline: none;
+  }
+  /* Styling the login button */
+  .btn {
+    width: 100%;
+    padding: 12px;
+    background: #3b5998;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  .btn:hover {
+    background: #2e4778;
+  }
+  .forgot {
+    display: block;
+    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .forgot:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  .wheellister-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px; 
+    font-size: 34px;
+    font-weight: bold;
+    color: rgba(155, 154, 154, 0.67);
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    z-index: 3;
+  }
+  .shake {
+    animation: shake 0.5s;
+  }
+  
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .login-container {
+      width: 100%;
+    }
+    body {
+      justify-content: center;
+    }
+  }
+  .bg-body-tertiary {
+    background-color: #100f24 !important;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(10);
+    }
+  }
+
+  p {
+    
+    animation: fadeIn 2s ease-out;
+  
+     
+  }
+  

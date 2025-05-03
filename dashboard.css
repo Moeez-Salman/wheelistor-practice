@@ -1,0 +1,51 @@
+#background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 130%;
+    z-index: -1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-image 2s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(10);
+    }
+  }
+
+  p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+    animation: fadeIn 2s ease-out;
+    position: absolute;
+      top: 150px;
+      left: 800px;
+      color: white;
+     
+  }
+  
+  .full-width-header {
+    width: 100%;
+    border-bottom: 1px solid white; 
+  }
+
+  .container {
+    max-width: 100%; 
+  }
+  /* Change the text color inside the search input */
+input[type="search"] {
+  color: white; /* Set text color here */
+}
+
+/* Optional: Change placeholder text color */
+input[type="search"]::placeholder {
+  color: #ddd; /* Set color for placeholder text */
+}

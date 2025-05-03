@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wheelister</title>
+  <link rel="icon" href="logo-removebg-preview.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="Project.css">
+</head>
+
+<body>
+
+  
+  <!-- Background container for smooth background transition -->
+   
+  <div id="background-container" style="background-image: url('wallpaper.jpg');"></div>
+
+  <div class="container">
+    <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
+      <div class="col-md-3 mb-2 mb-md-0">
+        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+          <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+      </div>
+      <a href=""><img src="logo-removebg-preview.png" style="border-radius: 190px ;left: 10px;position: absolute;size: 50px;top: 0px;" alt=""></a>
+
+      <!-- Add the class 'header-text' to center the text -->
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <a href="" style="text-decoration: none;"><li><p class="header-text" id="headerText"><h2 style="color: white;position: absolute;left: 900px;top: 16px;">WHEELISTER</h2></p></li></a>
+      </ul>
+
+      <!-- Apply the custom position with the 'login-signup-buttons' class -->
+      <div class="login-signup-buttons">
+        <button type="button" class="btn btn-outline-primary me-2" onclick="gotosecondpage()">Login</button>
+        <button type="button" class="btn btn-primary" onclick="gotothirdpage()">Sign-up</button>
+      </div>
+     
+    </header>
+  </div>
+  <hr style="color: white;">
+  <p style="position: relative; left: 19px; top: 110px; border: 1px solid rgb(48, 48, 48); width: 350px; border-radius: 20px; font-size: medium; padding: 14px; background-color: rgb(26, 25, 25); font-family: serif;">
+    Access to different cars at different showrooms of Pakistan and enjoy your driving adventure with different types of cars.
+  </p>
+  <p style="position: relative; left: 1400px; top: -90px; border: 1px solid rgb(48, 48, 48); width: 350px; border-radius: 20px; font-size: medium; padding: 14px; background-color: rgb(26, 25, 25); font-family: serif;">
+    Access to different cars at different showrooms of Pakistan and enjoy your driving adventure with different types of cars.
+  </p>
+  
+  <a href="javascript:void(0);" onclick="changeBackground('wallpaper.jpg')">
+    <img src="tesla.png" alt="" width="200px" style="position: absolute; top: 94%; left: 15%; transform: translate(-50%,-50%);">
+  </a>
+  <a href="javascript:void(0);" onclick="changeBackground('Free-download-Honda-Wallpaper.jpg')">
+    <img src="honda logo.png" alt="" width="110px" style="position: absolute; top: 94%; left: 40%; transform: translate(-50%,-50%);">
+  </a>
+
+  <a href="javascript:void(0);" onclick="changeBackground('toyota.jpg')">
+    <img src="Toyota-Logo-PNG-Clipart.png" alt="" width="100px" style="position: absolute; top: 94%; left: 65%; transform: translate(-50%,-50%);">
+  </a>
+
+  <a href="javascript:void(0);" onclick="changeBackground('mainpic.jpg')">
+    <img src="R (1).png" alt="" width="100px" style="position: absolute; top: 94%; left: 86%; transform: translate(-10%,-50%);">
+  </a>
+
+  <script>
+    function changeBackground(image) {
+      
+      
+      // Smoothly change the background image
+      const backgroundContainer = document.getElementById("background-container");
+      backgroundContainer.style.backgroundImage = "url(" + image + ")";
+      
+      // Trigger text animation
+      const headerText = document.getElementById("headerText");
+      headerText.classList.remove("animated"); 
+      void headerText.offsetWidth; 
+      headerText.classList.add("animated"); 
+
+
+      const paragraphs=document.querySelectorAll('p');
+      paragraphs.forEach((p) => {
+        p.classList.remove("animated"); 
+        void p.offsetWidth;
+        p.classList.add("animated"); 
+      });
+    }
+
+
+    function gotosecondpage(){
+    setTimeout(() => {
+      window.location.href="Login.html";
+    }, 1000);
+      
+    }
+
+    function gotothirdpage(){
+      setTimeout(()=>{
+        window.location.href="SignUp.html";
+      },1000);
+    }
+  </script>
+
+</body>
+</html>
